@@ -2,9 +2,9 @@
 CSCI3200 Final Project by Sinuo Liu
 
 This is basically a extension of the r2p.py file from canvas.
+This language is basically writting sign operators looks like English which we are using normally.
 
 The language is consisted of two parts: "I", and other "Gods". 
-This language is basically writting sign operators looks like English which we are using normally.
 "I" can define variables, print variables without any other expressions such as if or while.
 "Other Gods" have each roles within the language.
 |Name|Function|

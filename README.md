@@ -23,4 +23,4 @@ Currently operators only have:
 |x == y|x is identical to y|
 |x != y|x is not identical to y|
 
-Currently there are some bugs when I try to run Python3 godWords.py, but I can't figure out how to fix it.
+Currently I want to try to implement an else statement, but the program always say errors.

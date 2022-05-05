@@ -45,9 +45,9 @@ def translate(t):
     condition, block = t.children
     return 'if' + ' (' + translate(condition) + ') {\n'+ translate(block) + '\n}\n'
   
-  elif t.data == 'else_phrase':
-    block = t.children
-    return 'else' + '{\n' + translate(block) + '\n}\n'
+  #elif t.data == 'else_phrase':
+  #  block = t.children
+  #  return 'else' + '{\n' + translate(block) + '\n}\n'
 
   elif t.data == 'while_phrase':
     condition, block = t.children
@@ -102,9 +102,6 @@ I define y is 9.
 I define n is 20.
 Oschon says: if y is greater than x
   I define x is 10.
-Thal says end.
-Oschon says: if not,
-  I define y is 10.
 Thal says end.
 I declare n.
 Nal says: while n is not identical to y,

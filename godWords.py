@@ -26,8 +26,8 @@ print_phrase: "I declare" expression "."
             |expression "is less than" expression -> lt
             |expression "is greater or equal to" expression -> ge
             |expression "is less or equal to" expression -> le
-            |expression "is equal to" expression -> eq
-            |expression "is not equal to" expression -> nq
+            |expression "is identical to" expression -> eq
+            |expression "is not identical to" expression -> nq
 literal: NUMBER
 
 %import common.CNAME -> NAME
@@ -45,9 +45,9 @@ def translate(t):
     condition, block = t.children
     return 'if' + ' (' + translate(condition) + ') {\n'+ translate(block) + '\n}\n'
   
-  #elif t.data == 'else_phrase':
-  #  block = t.children
-  #  return 'else' + '{\n' + translate(block) + '\n}\n'
+  elif t.data == 'else_phrase':
+    block = t.children
+    return 'else' + '{\n' + translate(block) + '\n}\n'
 
   elif t.data == 'while_phrase':
     condition, block = t.children
@@ -83,6 +83,10 @@ def translate(t):
     lhs,rhs = t.children
     return translate(lhs) + '==' + translate(rhs)
   
+  elif t.data == 'nq':
+    lhs,rhs = t.children
+    return translate(lhs) + '!=' +translate(rhs)
+  
   elif t.data == 'assignment':
     lhs, rhs = t.children
     return translate(lhs) + ' = ' + translate(rhs) + ';'
@@ -103,7 +107,7 @@ Oschon says: if not,
   I define y is 10.
 Thal says end.
 I declare n.
-Nal says: while n is not equal to y,
+Nal says: while n is not identical to y,
   I define n is y.
 Thal says end.
 I declare n.

@@ -22,7 +22,7 @@ The language also support add and subtract operations. But currently it only sup
 |calculation|Formate|
 |---|---|
 |x = x + 1| I add 1 to x.|
-|x = x - 1| I remove 1 from x|
+|x = x - 1| I remove 1 from x.|
 
 Usually if/else/while statement only accept one expression within it. But if you want to add more expression, you need to add "Also, " in front of the second and further expressions.
 |Code|Example|

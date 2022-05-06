@@ -8,6 +8,8 @@ This language will translate into code which could be executed in Python.
 
 The language is consisted of two parts: "I", and other "Gods". 
 "I" can define variables, print variables without any other expressions such as if or while.
+e.g.:
+<code>I define x to be 45.</code>
 "Other Gods" have each roles within the language.
 |Name|Function|Example|
 |---|---|---|

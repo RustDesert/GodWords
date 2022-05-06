@@ -1,0 +1,20 @@
+I define x to be 5.
+I define y to be 20.
+I define n to be 2.
+
+Oschon says: if y is greater than x, then,
+  I define x to be 10.
+  Also, I define y to be 54.
+Thal says end.
+
+Oschon then says: if not, 
+  I define y to be 12.
+Thal says end.
+
+I declare n.
+
+Nal says: while n is not identical to y,
+  I add 1 to n.
+Thal says end.
+
+I declare n.

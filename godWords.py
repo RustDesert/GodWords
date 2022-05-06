@@ -60,7 +60,7 @@ def translate(t):
 
   elif t.data == 'while_phrase':
     condition, block = t.children
-    return 'while:'+' (' + translate(condition) + ') \n ' + translate(block) + '\n'
+    return 'while'+' (' + translate(condition) + '): \n ' + translate(block) + '\n'
   
   elif t.data == 'continue_phrase':
     phrase = t.children[0]
@@ -68,7 +68,7 @@ def translate(t):
 
   elif t.data == 'print_phrase':
     exp = t.children[0]
-    return 'print ' + translate(exp)
+    return 'print(' + translate(exp) + ')'
   
   elif t.data == 'add_phrase':
     exp, var = t.children

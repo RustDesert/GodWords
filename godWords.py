@@ -12,8 +12,9 @@ phrase_list: phrase+
             | print_phrase
             | add_phrase
             | sub_phrase
+            | continue_phrase
 
-assignment: "I define" var "is" expression "."
+assignment: "I define" var "to be" expression "."
 
 var: NAME
 
@@ -23,6 +24,7 @@ while_phrase: "Nal says: while" expression "," phrase_list "Thal says end."
 print_phrase: "I declare" expression "."
 add_phrase: "I add" expression "to" var "."
 sub_phrase: "I remove" expression "from" var "." 
+continue_phrase: "Also," phrase_list
 
 
 ?expression: var
@@ -50,30 +52,34 @@ def translate(t):
   
   elif t.data == 'if_phrase':
     condition, block = t.children
-    return 'if' + ' (' + translate(condition) + ') {\n'+ translate(block) + '\n}\n'
+    return 'if' + ' (' + translate(condition) + '): \n '+ translate(block) + '\n'
   
   elif t.data == 'else_phrase':
     block = t.children[0]
-    return 'else' + '{\n' + translate(block) + '\n}\n'
+    return 'else:' + '\n ' + translate(block) + '\n'
 
   elif t.data == 'while_phrase':
     condition, block = t.children
-    return 'while'+' (' + translate(condition) + ') {\n' + translate(block) + '\n}\n'
+    return 'while:'+' (' + translate(condition) + ') \n ' + translate(block) + '\n'
+  
+  elif t.data == 'continue_phrase':
+    phrase = t.children[0]
+    return ' '+translate(phrase)
 
   elif t.data == 'print_phrase':
     exp = t.children[0]
-    return 'print ' + translate(exp) + '."\\n";'
+    return 'print ' + translate(exp)
   
   elif t.data == 'add_phrase':
     exp, var = t.children
-    return translate(var) + '+' + translate(exp) + ';'
+    return translate(var) + '=' + translate(var) + '+' + translate(exp)
   
   elif t.data == 'sub_phrase':
     exp, var = t.children
-    return translate(var) + '-' + translate(exp) + ';'
+    return translate(var) + '=' + translate(var) + '-' + translate(exp)
   
   elif t.data == 'var':
-    return '$'+t.children[0]
+    return t.children[0]
   
   elif t.data == 'literal':
     return t.children[0]
@@ -104,34 +110,16 @@ def translate(t):
   
   elif t.data == 'assignment':
     lhs, rhs = t.children
-    return translate(lhs) + ' = ' + translate(rhs) + ';'
+    return translate(lhs) + ' = ' + translate(rhs)
   
   else:
     raise SyntaxError("bad tree")
 
 
 parser = Lark(my_grammar)
-program = """
-I define x is 5.
-I define y is 20.
-I define n is 2.
-
-Oschon says: if y is greater than x, then,
-  I define x is 10.
-Thal says end.
-
-Oschon then says: if not, 
-  I define y is 12.
-Thal says end.
-
-I declare n.
-
-Nal says: while n is not identical to y,
-  I add 1 to n.
-Thal says end.
-
-I declare n.
-"""
-parse_tree = parser.parse(program)
+print("Please input the demo name: ")
+fileName = input()
+program = open(fileName, "r")
+parse_tree = parser.parse(program.read())
 print(translate(parse_tree))
 #print(parse_tree.pretty())

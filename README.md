@@ -13,6 +13,12 @@ The language is consisted of two parts: "I", and other "Gods".
 |Nal|while statement|
 |Thal|end the statement|
 
+The language also support add and subtract operations. But currently it only support a number with a variable or variable with a variable, you can't assign a calculation directly to a variable. (you can't do x = 1+2).
+|calculation|Formate|
+|---|---|
+|x + 1| I add 1 to x.|
+|x - 1| I remove 1 from x|
+
 Currently operators only have:
 |operator|Formate|
 |---|---|

@@ -9,8 +9,8 @@ The language is consisted of two parts: "I", and other "Gods".
 "Other Gods" have each roles within the language.
 |Name|Function|Example|
 |---|---|---|
-|Oschon|if statement and else statement|Oschon says: if y is greater than x, then {expression} Thal says end.|
-|Nal|while statement|Nal says: while n is not identical to y, {expression}  Thal says end.|
+|Oschon|if statement and else statement|Oschon says: if y is greater than x, then <br /> {expression} <br /> Thal says end. <br /> <br /> Oschon then says: if not, <br /> {expression} <br /> Thal says end.|
+|Nal|while statement|Nal says: while n is not identical to y, <br /> {expression} <br /> Thal says end.|
 |Thal|end the statement| This will add to the end of all statements. See above examples|
 
 The language also support add and subtract operations. But currently it only support a number with a variable or variable with a variable, you can't assign a calculation directly to a variable. (you can't do x = 1+2).

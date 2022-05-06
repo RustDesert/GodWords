@@ -2,8 +2,10 @@ I define BookOfCarve to be 10.
 I define ScrollOfLegend to be 8.
 
 Oschon says: if BookOfCarve is greater than ScrollOfLegend, then,
-    I remove ScrollOfLegend from BookOfCarve.
-    Also, I add BookOfCarve to ScrollOfLegend.
+    I define temp to be BookOfCarve.
+    Also, I remove ScrollOfLegend from BookOfCarve.
+    Also, I remove BookOfCarve from temp.
+    Also, I add temp to ScrollOfLegend.
 Thal says end.
 
 I declare BookOfCarve.

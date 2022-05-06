@@ -10,15 +10,20 @@ phrase_list: phrase+
             | else_phrase
             | while_phrase
             | print_phrase
+            | add_phrase
+            | sub_phrase
 
 assignment: "I define" var "is" expression "."
 
 var: NAME
 
-if_phrase: "Oschon says: if" expression phrase_list "Thal says end."
-else_phrase: "Oschon says: if not," phrase_list "Thal says end."
+if_phrase: "Oschon says: if" expression ", then" phrase_list "Thal says end."
+else_phrase: "Oschon then says: if not," phrase_list "Thal says end."
 while_phrase: "Nal says: while" expression "," phrase_list "Thal says end."
 print_phrase: "I declare" expression "."
+add_phrase: "I let" expression "add to" var "."
+sub_phrase: "I remove" expression "from" var "." 
+
 
 ?expression: var
             |literal
@@ -29,6 +34,8 @@ print_phrase: "I declare" expression "."
             |expression "is identical to" expression -> eq
             |expression "is not identical to" expression -> nq
 literal: NUMBER
+
+
 
 %import common.CNAME -> NAME
 %import common.WS
@@ -45,9 +52,9 @@ def translate(t):
     condition, block = t.children
     return 'if' + ' (' + translate(condition) + ') {\n'+ translate(block) + '\n}\n'
   
-  #elif t.data == 'else_phrase':
-  #  block = t.children
-  #  return 'else' + '{\n' + translate(block) + '\n}\n'
+  elif t.data == 'else_phrase':
+    block = t.children[0]
+    return 'else' + '{\n' + translate(block) + '\n}\n'
 
   elif t.data == 'while_phrase':
     condition, block = t.children
@@ -56,6 +63,14 @@ def translate(t):
   elif t.data == 'print_phrase':
     exp = t.children[0]
     return 'print ' + translate(exp) + '."\\n";'
+  
+  elif t.data == 'add_phrase':
+    exp, var = t.children
+    return translate(var) + '+' + translate(exp) + ';'
+  
+  elif t.data == 'sub_phrase':
+    exp, var = t.children
+    return translate(var) + '-' + translate(exp) + ';'
   
   elif t.data == 'var':
     return '$'+t.children[0]
@@ -98,15 +113,23 @@ def translate(t):
 parser = Lark(my_grammar)
 program = """
 I define x is 5.
-I define y is 9.
-I define n is 20.
-Oschon says: if y is greater than x
+I define y is 20.
+I define n is 2.
+
+Oschon says: if y is greater than x, then
   I define x is 10.
 Thal says end.
-I declare n.
-Nal says: while n is not identical to y,
-  I define n is y.
+
+Oschon then says: if not, 
+  I define y is 12.
 Thal says end.
+
+I declare n.
+
+Nal says: while n is not identical to y,
+  I let 1 add to n.
+Thal says end.
+
 I declare n.
 """
 parse_tree = parser.parse(program)

@@ -7,11 +7,11 @@ This language is basically writting sign operators looks like English which we a
 The language is consisted of two parts: "I", and other "Gods". 
 "I" can define variables, print variables without any other expressions such as if or while.
 "Other Gods" have each roles within the language.
-|Name|Function|
-|---|---|
-|Oschon|if statement and else statement|
-|Nal|while statement|
-|Thal|end the statement|
+|Name|Function|Example|
+|---|---|---|
+|Oschon|if statement and else statement|Oschon says: if y is greater than x, then {expression} Thal says end.|
+|Nal|while statement|Nal says: while n is not identical to y, {expression}  Thal says end.|
+|Thal|end the statement| This will add to the end of all statements. See above examples|
 
 The language also support add and subtract operations. But currently it only support a number with a variable or variable with a variable, you can't assign a calculation directly to a variable. (you can't do x = 1+2).
 |calculation|Formate|

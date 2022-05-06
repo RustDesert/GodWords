@@ -17,11 +17,11 @@ assignment: "I define" var "is" expression "."
 
 var: NAME
 
-if_phrase: "Oschon says: if" expression ", then" phrase_list "Thal says end."
+if_phrase: "Oschon says: if" expression ", then," phrase_list "Thal says end."
 else_phrase: "Oschon then says: if not," phrase_list "Thal says end."
 while_phrase: "Nal says: while" expression "," phrase_list "Thal says end."
 print_phrase: "I declare" expression "."
-add_phrase: "I let" expression "add to" var "."
+add_phrase: "I add" expression "to" var "."
 sub_phrase: "I remove" expression "from" var "." 
 
 
@@ -116,7 +116,7 @@ I define x is 5.
 I define y is 20.
 I define n is 2.
 
-Oschon says: if y is greater than x, then
+Oschon says: if y is greater than x, then,
   I define x is 10.
 Thal says end.
 
@@ -127,7 +127,7 @@ Thal says end.
 I declare n.
 
 Nal says: while n is not identical to y,
-  I let 1 add to n.
+  I add 1 to n.
 Thal says end.
 
 I declare n.

@@ -35,5 +35,3 @@ Currently operators only have:
 |x <= y|x is less or equal to y|
 |x == y|x is identical to y|
 |x != y|x is not identical to y|
-
-Currently I want to try to implement an else statement, but the program always say errors.

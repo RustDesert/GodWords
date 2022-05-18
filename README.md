@@ -1,5 +1,5 @@
 # GodWords
-CSCI3200 Final Project by Sinuo Liu
+CSCI3200 Final Project
 
 This is basically a extension of the r2p.py file from canvas.
 This language is basically writting sign operators looks like English which we are using normally.
